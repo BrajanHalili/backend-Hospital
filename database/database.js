@@ -1,21 +1,28 @@
-const {Client} = require('pg')
+const { Sequelize } = require('sequelize')
+
+require('dotenv').config()
+//const {Client} = require('pg')
+
+const db = new Sequelize("Hospital", "postgres", process.env.password, {
+    host: 'localhost',
+    dialect: 'postgres'
+  })
+
+/**const db = new Sequelize({
+    host: "localhost",
+    user: "postgres",
+    port: 5432,
+    password: process.env.password,
+})
+
 
 const client = new Client({
     host: "localhost",
     user: "postgres",
     port: 5432,
-    password: "",
+    password: process.env.password,
     database: "Hospital"
 })
+client.connect();**/
 
-client.connect();
-
-client.query(`Select * from Patients`, (err,res) =>{
-    if(!err){
-        console.log(res.rows);
-    }
-    else{
-        console.log(err.message);
-    }
-    client.end;
-})
+module.exports = db;
