@@ -17,7 +17,7 @@ app.get('/', (req,res) =>{
 })
 
 app.use('/patient', require('./routes/patients'));
-
+app.use('/appointment', require('./routes/appointments'));
 /*app.get('/insert', (req,res)=>{
     Patient.create({
         patient_name: 'Jane Smith',
