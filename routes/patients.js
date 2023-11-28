@@ -15,18 +15,8 @@ router.get('/', (req, res) =>
     //console.log(patients);
     //res.send("Patients");
 
-    //Get patient by PK
-router.get('/:id', async(req,res) =>{
-    await Patient.findByPk(req.params.id)
-      .then(patient => {
-        console.log(patient);
-        res.send(patient);
-      })   
-      .catch(err=>console.log(err));
-})
-
-//Add patient
-router.get('/add', (req,res)=>{
+//Add default patient
+router.get('/add', async(req,res)=>{
   const data = {
     patient_name: 'John Smith',
     patient_dob: '1993-04-20',
@@ -52,6 +42,15 @@ router.get('/add', (req,res)=>{
     .catch(err=>console.log(err));
 })  
 
+    //Get patient by PK
+    router.get('/:id', (req,res) =>{
+      Patient.findByPk(req.params.id)
+        .then(patient => {
+          console.log(patient);
+          res.send(patient);
+        })   
+        .catch(err=>console.log(err));
+  });
 //Delete patient
 router.get('/delete/:id', async(req,res)=>{
   await Patient.destroy({
@@ -66,7 +65,7 @@ router.get('/delete/:id', async(req,res)=>{
     .catch(err=>console.log(err));
 })
 
-//Update patient
+//Update patient address
 router.get('/update/:id/:address', async(req,res)=>{
   await Patient.update({ patient_address: req.params.address }, {
     where:{
