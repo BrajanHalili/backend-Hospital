@@ -3,6 +3,8 @@ const router = express.Router();
 const Patient  = require('../models/Patient');
 const db = require('../database/database')
 
+  // Add Access Control Allow Origin headers
+
 //Get patients list
 router.get('/', (req, res) => 
     Patient.findAll()
@@ -15,8 +17,22 @@ router.get('/', (req, res) =>
     //console.log(patients);
     //res.send("Patients");
 
+router.route("/add").post((req,res)=>{
+      Patient.create({
+    patient_name: req.body.name,
+    patient_dob: req.body.dob,
+    patient_sex: req.body.sex,
+    patient_address: req.body.address,
+    patient_maritial_status: req.body.maritial_status,
+    patient_phone: req.body.phone,
+    patient_email: req.body.email
+      })
+      console.log("Patient created");
+})
+  //res.json({"users": ["userOne", "userTwo", "userThree"]})
+
 //Add default patient
-router.get('/add', async(req,res)=>{
+/*router.get('/add', async(req,res)=>{
   const data = {
     patient_name: 'John Smith',
     patient_dob: '1993-04-20',
@@ -40,7 +56,7 @@ router.get('/add', async(req,res)=>{
       res.redirect('/patient');
     })
     .catch(err=>console.log(err));
-})  
+})  */
 
     //Get patient by PK
     router.get('/:id', (req,res) =>{
