@@ -17,7 +17,7 @@ const Patient = db.define('Patients', {
     type: Sequelize.STRING,
   },
   patient_phone: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.STRING,
 
   },
   patient_email: {
