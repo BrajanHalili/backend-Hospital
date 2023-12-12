@@ -47,17 +47,15 @@ router.get('/:id', (req,res) =>{
 });
 
 //Delete appointment
-router.get('/delete/:id', async(req,res)=>{
-    await Appointment.destroy({
-        where:{
+router.delete('/:id', function(req, res, next) {
+    Appointment.destroy({
+        where: {
             id: req.params.id
         }
     })
-    .then(()=>{
-        console.log("Appointment deleted");
-        res.redirect('/appointment');
-    })
-})
+      .then(() => res.status(200).json("Deleted an appointment!"))
+      .catch(err => next(err));
+});
 
 //Update appointment date
 router.get('/update/:id/:date', async(req,res)=>{
