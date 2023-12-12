@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // Route to search for medication by generic name
-router.get('/search', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const { genericName } = req.query;
     const limit = req.query.limit || 10; // Default limit to 10 if not specified
