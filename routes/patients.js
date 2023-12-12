@@ -67,19 +67,18 @@ router.route("/add").post((req,res)=>{
         })   
         .catch(err=>console.log(err));
   });
+
 //Delete patient
-router.get('/delete/:id', async(req,res)=>{
-  await Patient.destroy({
-    where:{
-      id: req.params.id
-    }
-  })
-    .then(()=>{
-      console.log("Delete successful");
-      res.redirect('/patient/');
+router.delete('/:id', function(req, res, next) {
+    Patient.destroy({
+      where: {
+        id: req.params.id
+      }
     })
-    .catch(err=>console.log(err));
-})
+      .then(() => res.status(200).json("Deleted a patient!"))
+      .catch(err => next(err));
+  });
+
 
 //Update patient address
 router.get('/update/:id/:address', async(req,res)=>{
