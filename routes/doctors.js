@@ -47,19 +47,17 @@ router.get('/add', async(req,res)=>{
           .catch(err=>console.log(err));
     });
 
-  //Delete doctor
-  router.get('/delete/:id', async(req,res)=>{
-    await Doctor.destroy({
-      where:{
-        id: req.params.id
-      }
+//Delete doctor
+router.delete('/:id', function (req, res, next) {
+    Doctor.destroy({
+        where: {
+            id: req.params.id
+        }
     })
-      .then(()=>{
-        console.log("Delete successful");
-        res.redirect('/doctor/');
-      })
-      .catch(err=>console.log(err));
-  })
+        .then(() => res.status(200).json("Deleted a Doctor!"))
+        .catch(err => next(err));
+});
+
 
   //Update doctor address
 router.get('/update/:id/:address', async(req,res)=>{
