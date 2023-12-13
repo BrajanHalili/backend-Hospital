@@ -1,4 +1,4 @@
-const { Sequelize} = require('sequelize')
+const { Sequelize } = require('sequelize')
 const db = require('../database/database');
 const Doctor = db.define('Doctors', {
   doctor_name: {
@@ -17,7 +17,7 @@ const Doctor = db.define('Doctors', {
     type: Sequelize.STRING,
   },
   doctor_license_number: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.STRING,
   }
 });
 

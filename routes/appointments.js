@@ -1,73 +1,66 @@
 const express = require('express');
 const router = express.Router();
-const Patient  = require('../models/Patient');
-const Appointment  = require('../models/Appointment');
+const Patient = require('../models/Patient');
+const Appointment = require('../models/Appointment');
 const db = require('../database/database')
 
 //Get all appointments
-router.get('/', (req, res) => 
+router.get('/', (req, res) =>
     Appointment.findAll()
-      .then(patients => {
-        console.log(patients);
-        res.send(patients);
-      })
-      .catch(err=>console.log(err)));
+        .then(patients => {
+            console.log(patients);
+            res.send(patients);
+        })
+        .catch(err => console.log(err)));
 
 //Add default appointment
-router.get('/add', (req,res)=>{
-    const data = {
-        patient_id: 3,
-        doctor_id: 1,
-        appointment_date: '2023-12-10',
-        appointment_time: '12:30:00',
-        appointment_reason: 'Headache'
-    }
+router.route("/add").post((req, res) => {
     Appointment.create({
-        patient_id: data.patient_id,
-        doctor_id: data.doctor_id,
-        appointment_date: data.appointment_date,
-        appointment_time: data.appointment_time,
-        appointment_reason: data.appointment_reason
+        patient_id: req.body.patient_id,
+        doctor_id: req.body.doctor_id,
+        appointment_date: req.body.appointment_date,
+        appointment_time: req.body.appointment_time,
+        appointment_reason: req.body.appointment_reason
     })
-    .then(appointment =>{ 
-        console.log(appointment);
-        res.redirect('/appointment');
-      })
-      .catch(err=>console.log(err));
+        .then(() => res.status(201).json("Created an Appointment!"))
+        .catch(err => console.log(err));
+    console.log("Patient created");
+
 })
 
+
 //Get appointment by id
-router.get('/:id', (req,res) =>{
+router.get('/:id', (req, res) => {
     Appointment.findByPk(req.params.id)
-      .then(appointment => {
-        console.log(appointment);
-        res.send(appointment);
-      })   
-      .catch(err=>console.log(err));
+        .then(appointment => {
+            console.log(appointment);
+            res.send(appointment);
+        })
+        .catch(err => console.log(err));
 });
 
 //Delete appointment
-router.delete('/:id', function(req, res, next) {
+router.delete('/:id', function (req, res, next) {
     Appointment.destroy({
         where: {
             id: req.params.id
         }
     })
-      .then(() => res.status(200).json("Deleted an appointment!"))
-      .catch(err => next(err));
+        .then(() => res.status(200).json("Deleted an appointment!"))
+        .catch(err => next(err));
 });
 
 //Update appointment date
-router.get('/update/:id/:date', async(req,res)=>{
-    await Appointment.update({ appointment_date: req.params.date}, {
-        where:{
+router.get('/update/:id/:date', async (req, res) => {
+    await Appointment.update({ appointment_date: req.params.date }, {
+        where: {
             id: req.params.id
         }
     })
-    .then(()=>{
-        console.log("Appointment date updated");
-        res.redirect('/appointment/' + req.params.id);
-    })
+        .then(() => {
+            console.log("Appointment date updated");
+            res.redirect('/appointment/' + req.params.id);
+        })
 })
 
 module.exports = router;
