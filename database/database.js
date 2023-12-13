@@ -5,7 +5,7 @@ require('dotenv').config()
 
 const db = new Sequelize("Hospital", "postgres", process.env.password, {
     host: 'localhost',
-    dialect: 'postgres'
+    dialect: 'postgres',
   })
 
 /**const db = new Sequelize({
