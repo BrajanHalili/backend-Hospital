@@ -1,0 +1,2 @@
+commands for npm install issues:
+chmod +x node_modules/.bin/nodemon
