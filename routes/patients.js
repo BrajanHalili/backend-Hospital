@@ -13,9 +13,6 @@ router.get('/', (req, res) =>
         res.send(patients);
       })
       .catch(err=>console.log(err)));
-    //let patients = Patient.findAll();
-    //console.log(patients);
-    //res.send("Patients");
 
 router.route("/add").post((req,res)=>{
       Patient.create({
@@ -29,34 +26,6 @@ router.route("/add").post((req,res)=>{
       })
       console.log("Patient created");
 })
-  //res.json({"users": ["userOne", "userTwo", "userThree"]})
-
-//Add default patient
-/*router.get('/add', async(req,res)=>{
-  const data = {
-    patient_name: 'John Smith',
-    patient_dob: '1993-04-20',
-    patient_sex: 'Male',
-    patient_address: '123 Side St,Place,NY',
-    patient_maritial_status: 'Married',
-    patient_phone: 987654321,
-    patient_email: 'smith@email.com'
-  }
-  Patient.create({
-  patient_name: data.patient_name,
-    patient_dob: data.patient_dob,
-    patient_sex: data.patient_sex,
-    patient_address: data.patient_address,
-    patient_maritial_status: data.patient_maritial_status,
-    patient_phone: data.patient_phone,
-    patient_email: data.patient_email
-  })
-    .then(patient =>{ 
-      console.log(patient);
-      res.redirect('/patient');
-    })
-    .catch(err=>console.log(err));
-})  */
 
     //Get patient by PK
     router.get('/:id', (req,res) =>{
@@ -80,15 +49,23 @@ router.delete('/:id', function(req, res, next) {
 
 
 //Update patient address
-router.get('/update/:id/:address', async(req,res)=>{
-  await Patient.update({ patient_address: req.params.address }, {
+router.route('/update/:id').put(async(req,res)=>{
+  await Patient.update({ 
+    patient_name: req.body.name,
+    patient_dob: req.body.dob,
+    patient_sex: req.body.sex,
+    patient_address: req.body.address,
+    patient_maritial_status: req.body.maritial_status,
+    patient_phone: req.body.phone,
+    patient_email: req.body.email}, 
+    {
     where:{
       id: req.params.id
     }
   })
   .then(()=>{
     console.log("Update successful");
-    res.redirect('/patient/'+req.params.id);
+    //res.redirect('/patient/'+req.params.id);
   })
   .catch(err=>console.log(err));
 })
