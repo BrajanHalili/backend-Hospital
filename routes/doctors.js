@@ -21,7 +21,7 @@ router.route("/add").post((req, res) => {
     doctor_sex: req.body.sex,
     doctor_address: req.body.address,
     doctor_specialty: req.body.specialty,
-    doctor_license_number: req.body.license_number,
+    doctor_license_number: req.body.license,
   })
     .then(() => res.status(201).json("Created a Doctor!"))
   console.log("Doctor created");
@@ -50,15 +50,22 @@ router.delete('/:id', function (req, res, next) {
 
 
 //Update doctor address
-router.get('/update/:id/:address', async (req, res) => {
-  await Doctor.update({ doctor_address: req.params.address }, {
-    where: {
-      id: req.params.id
-    }
-  })
+router.route('/update/:id').put(async (req, res) => {
+  await Doctor.update({
+    doctor_name: req.body.name,
+    doctor_dob: req.body.dob,
+    doctor_sex: req.body.sex,
+    doctor_address: req.body.address,
+    doctor_specialty: req.body.specialty,
+    doctor_license_number: req.body.license
+  },
+    {
+      where: {
+        id: req.params.id
+      }
+    })
     .then(() => {
       console.log("Update successful");
-      res.redirect('/doctor/' + req.params.id);
     })
     .catch(err => console.log(err));
 })
