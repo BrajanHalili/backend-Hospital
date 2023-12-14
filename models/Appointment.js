@@ -7,6 +7,12 @@ const Appointment = db.define('Appointments', {
     doctor_id: {
         type: Sequelize.INTEGER,
     },
+    patient_name: {
+        type: Sequelize.STRING,
+    },
+    doctor_name: {
+        type: Sequelize.STRING,
+    },
     appointment_date: {
         type: Sequelize.DATEONLY,
     },
