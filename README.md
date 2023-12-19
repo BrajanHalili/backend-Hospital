@@ -66,4 +66,5 @@ CREATE TABLE IF NOT EXISTS public."Appointments"
 ~~~
 # Running the backend
 * Go to the .env file and insert the username and password of the postgres account.
+* Run the command "npm install" in the terminal.
 * Run the command "npm start" in the terminal.
