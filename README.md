@@ -1,10 +1,12 @@
 # Creating the database for the project through PostgreSQL
-* Create a database named exactly "Hospital".
+* Install pgAdmin 4 during the postgres installation process or here https://www.pgadmin.org/download/.
+* Create a user and set its password.
+* Right click "Databases" and create a database named exactly "Hospital".
 
-## Creating tables for the database
+# Creating tables for the database
 * Go to "Hospital" => "Schemas" => "Public"
 * In "Public", right click "Tables" and click "Query Tool".
-* Copy and paste this script to create "Patients" table:
+* Copy and paste this script and click "Execute/Refresh" to create "Patients" table:
 ~~~
 CREATE TABLE IF NOT EXISTS public."Patients"
   (
@@ -21,7 +23,7 @@ CREATE TABLE IF NOT EXISTS public."Patients"
     CONSTRAINT "Patients_pkey" PRIMARY KEY (id)
 )
 ~~~
-* Copy and paste this script to create "Doctors" table:
+* Copy and paste this script and click "Execute/Refresh" to create "Doctors" table:
 ~~~
 CREATE TABLE IF NOT EXISTS public."Doctors"
 (
@@ -37,7 +39,7 @@ CREATE TABLE IF NOT EXISTS public."Doctors"
     CONSTRAINT "Doctors_pkey" PRIMARY KEY (id)
 )
 ~~~
-* Copy and paste this script to create "Appointments" table:
+* Copy and paste this script and click "Execute/Refresh" to create "Appointments" table:
 ~~~
 CREATE TABLE IF NOT EXISTS public."Appointments"
 (
@@ -62,5 +64,6 @@ CREATE TABLE IF NOT EXISTS public."Appointments"
         ON DELETE NO ACTION
 )
 ~~~
+# Running the backend
 * Go to the .env file and insert the username and password of the postgres account.
-* Type "npm start" in the terminal.
+* Run the command "npm start" in the terminal.
