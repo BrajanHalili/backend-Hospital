@@ -23,7 +23,8 @@ app.get('/', (req, res) => {
 app.use('/patient', require('./routes/patients'));
 app.use('/appointment', require('./routes/appointments'));
 app.use('/doctor', require('./routes/doctors'));
-app.use('/search', require('./routes/search'));
+app.use('/generic', require('./routes/GenericSearch'));
+app.use('/brand', require('./routes/BrandSearch'));
 
 app.listen(3006, () => {
     console.log("server running");
