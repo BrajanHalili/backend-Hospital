@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Patient = require('../models/Patient');
+const Appointment = require('../models/Appointment')
 const db = require('../database/database')
 
 //Get patients list
@@ -30,11 +31,20 @@ router.route("/add").post((req, res) => {
 
 
 //Get patient by PK
-router.get('/:id', (req, res) => {
+router.get('/:id', (req, res) => {   
+ let apptdata; 
+  Appointment.findAll({  
+      where: {
+      patient_id: req.params.id
+    }})
+    .then(appointments=> {
+        console.log(appointments);
+        apptdata = appointments;
+    })
   Patient.findByPk(req.params.id)
     .then(patient => {
       console.log(patient);
-      res.send(patient);
+      res.send({patient: patient, apptdata: apptdata});
     })
     .catch(err => console.log(err));
 });
