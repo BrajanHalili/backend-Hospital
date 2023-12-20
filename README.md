@@ -70,30 +70,31 @@ CREATE TABLE IF NOT EXISTS public."Appointments"
 * Run the command "npm start" in the terminal.
 
 # Requirements:
-* Create 2 or more models, each with 2 or more fields
-https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/models/Appointment.js#L3
-https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/models/Doctor.js#L3
-https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/models/Patient.js#L3
-* 2 or models should be associated with each other
-https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/models/Appointment.js#L4C5-L8C33
-* Write routes to add new instances to each model
-https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/appointments.js#L38C1-L52C3
-https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/doctors.js#L17C1-L29C1
-https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/patients.js#L17C1-L29C3
-* Write routes that returns all instances from each model
-https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/appointments.js#L8C1-L14C42
-https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/doctors.js#L6C1-L13C38
-https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/patients.js#L6C1-L14C38
-* Write routes that return individual instances from each model based on their IDs
-https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/appointments.js#L17C1-L25C4
-https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/doctors.js#L30C1-L38C4
-https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/patients.js#L32C1-L40C4
-* Write routes to update instances in each model
-https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/appointments.js#L53C1-L72C3
-https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/doctors.js#L52C1-L71C3
-https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/patients.js#L55C1-L75C3
-* Write routes to remove instances form each model, based on their IDs
-https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/appointments.js#L27C1-L36C4
-https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/doctors.js#L40C1-L49C4
-https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/patients.js#L43C1-L52C4
-* Write a route that returns one instance from a model, and all instances associated with it in a different model
+1. Create 2 or more models, each with 2 or more fields
+    - https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/models/Appointment.js#L3
+    - https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/models/Doctor.js#L3
+    - https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/models/Patient.js#L3
+1. 2 or models should be associated with each other
+    - https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/models/Appointment.js#L4C5-L8C33
+1. Write routes to add new instances to each model
+    -  https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/appointments.js#L38C1-L52C3
+    -  https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/doctors.js#L17C1-L29C1
+    - https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/patients.js#L17C1-L29C3
+1. Write routes that returns all instances from each model
+    - https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/appointments.js#L8C1-L14C42
+    - https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/doctors.js#L6C1-L13C38
+    - https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/patients.js#L6C1-L14C38
+1. Write routes that return individual instances from each model based on their IDs
+    - https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/appointments.js#L17C1-L25C4
+    - https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/doctors.js#L30C1-L38C4
+    - https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/patients.js#L32C1-L40C4
+1. Write routes to update instances in each model
+    - https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/appointments.js#L53C1-L72C3
+    - https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/doctors.js#L52C1-L71C3
+    - https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/patients.js#L55C1-L75C3
+1. Write routes to remove instances from each model, based on their IDs
+    - https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/appointments.js#L27C1-L36C4
+    - https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/doctors.js#L40C1-L49C4
+    - https://github.com/BrajanHalili/backend-final/blob/7ad13c3aa7c1ce1c7889eaf435cb3e76c4f6e5a6/routes/patients.js#L43C1-L52C4
+1. Write a route that returns one instance from a model, and all instances associated with it in a different model
+    - https://github.com/BrajanHalili/backend-final/blob/72d87b17e97f5eb3538061280fc600f49e7d90b9/routes/patients.js#L34C1-L50C4
